@@ -13,11 +13,7 @@ class _MagazineDetailScreenState extends State<MagazineDetailScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
-          children: [
-            Container(
-              color: Colors.grey,
-            ),
-          ],
+          children: [],
         ),
       ),
     );
