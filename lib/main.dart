@@ -1,3 +1,4 @@
+import 'package:e_magazine_ui/screen/home/home_screen.dart';
 import 'package:e_magazine_ui/screen/magazine_detail/magazinbe_detail_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (_) => MaterialApp(
         title: 'Magazi',
         theme: AppTheme.light(),
+        // home:  HomeScreen(),
         home: const MagazineDetailScreen(),
       ),
     );
