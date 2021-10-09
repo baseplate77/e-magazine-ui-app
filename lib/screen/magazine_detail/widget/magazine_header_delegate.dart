@@ -20,7 +20,7 @@ class MagazinHeaderDelegate extends SliverPersistentHeaderDelegate {
     final reverseScrollPre = 1 - scrollPer;
 
     // print("scroll persent : ${(scrollPer)}");
-    print("reverse scroll persent : ${(reverseScrollPre * -50)}");
+    // print("reverse scroll persent : ${(reverseScrollPre * -50)}");
 
     return Stack(
       // fit: StackFit.expand,
