@@ -12,6 +12,7 @@ class MagazineDetailScreen extends StatefulWidget {
 
 class _MagazineDetailScreenState extends State<MagazineDetailScreen> {
   late ScrollController _scrollController;
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +27,7 @@ class _MagazineDetailScreenState extends State<MagazineDetailScreen> {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
+        fit: StackFit.expand,
         children: [
           // MAIN SCROLLABLE CONTENT
           CustomScrollView(
@@ -34,14 +36,15 @@ class _MagazineDetailScreenState extends State<MagazineDetailScreen> {
               SliverPersistentHeader(
                 pinned: true,
                 delegate: MagazinHeaderDelegate(
-                    minExented: 90,
-                    maxExented: deviceSize.height * 0.85,
-                    deviceSize: deviceSize),
+                  minExented: 90,
+                  maxExented: deviceSize.height * 0.85,
+                  deviceSize: deviceSize,
+                ),
               ),
               // BODY PART
               SliverToBoxAdapter(
                 child: Container(
-                  color: Colors.black45,
+                  color: Colors.black12,
                   height: 1000,
                   child: Image.asset("assets/images/music-album.jpg"),
                 ),

@@ -19,24 +19,50 @@ class _MagazineCoverImageState extends State<MagazineCoverImage> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final opacityRate = widget.scrollPer > 0.9 ? 1 : 0.45;
-    return Transform(
-      transform: Matrix4.identity(),
-      child: Opacity(
-        opacity: math.max((1 - widget.scrollPer * opacityRate), 0),
-        child: Container(
-          width: deviceSize.width,
-          height: deviceSize.height * 0.7,
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: ExactAssetImage("assets/images/music-album.jpg"),
-              fit: BoxFit.cover,
-            ),
-            color: Colors.black,
+
+    const _scrollOffset = 0.7;
+
+    final _scaleValue = 2.5 * widget.scrollPer;
+    final _transformYValue = -100 * widget.scrollPer;
+    const _scaleValue70 = 2.5 * _scrollOffset;
+    const _transfromYValue70 = -100 * _scrollOffset;
+    final _tranformYReverse =
+        // _transfromYValue70 + math.min(0, widget.scrollPer * 90);
+        -70 * _transfromYValue70 / _transformYValue;
+
+    final _is70PerScrolled = widget.scrollPer >= _scrollOffset;
+
+    return Opacity(
+      opacity: math.max((1 - widget.scrollPer * opacityRate), 0.5),
+      child: Container(
+        width: deviceSize.width,
+        height: deviceSize.height * 0.7,
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage("assets/images/music-album.jpg"),
+            fit: BoxFit.cover,
           ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-            child: const MagazinePageView(),
+          color: Colors.black,
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Transform.translate(
+            offset: Offset(
+                0,
+                math.min(
+                  0,
+                  _is70PerScrolled
+                      ? (_tranformYReverse.toDouble())
+                      : _transformYValue,
+                )),
+            child: Transform.scale(
+              scale: math.max(
+                1,
+                _is70PerScrolled ? _scaleValue70 : _scaleValue,
+              ),
+              child: const MagazinePageView(),
+            ),
           ),
         ),
       ),
@@ -60,7 +86,9 @@ class _MagazinePageViewState extends State<MagazinePageView> {
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 0);
+    _controller = PageController(
+      initialPage: 0,
+    );
     _controller.addListener(() {
       pageOffset = _controller.page!;
       setState(() {});
@@ -70,7 +98,7 @@ class _MagazinePageViewState extends State<MagazinePageView> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.8,
+      aspectRatio: 1.6,
       child: PageView.builder(
           controller: _controller,
           itemCount: 3,
