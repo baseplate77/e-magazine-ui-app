@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       builder: (_) => MaterialApp(
         title: 'Magazi',
         theme: AppTheme.light(),
-        // home:  HomeScreen(),
-        home: const MagazineDetailScreen(),
+        home: HomeScreen(),
+        // home: const MagazineDetailScreen(),
       ),
     );
   }

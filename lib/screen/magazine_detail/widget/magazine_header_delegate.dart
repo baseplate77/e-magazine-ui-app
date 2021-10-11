@@ -1,15 +1,20 @@
-﻿import 'package:e_magazine_ui/core/animations/animations.dart';
-import 'package:e_magazine_ui/screen/magazine_detail/widget/magazine_cover_image.dart';
+﻿import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+
+import 'magazine_cover_image.dart';
 
 class MagazinHeaderDelegate extends SliverPersistentHeaderDelegate {
   final double maxExented;
   final double minExented;
   final Size deviceSize;
+  final String imagePath;
+  final String tag;
   MagazinHeaderDelegate(
       {required this.maxExented,
       required this.deviceSize,
+      required this.imagePath,
+      required this.tag,
       required this.minExented});
 
   @override
@@ -37,6 +42,8 @@ class MagazinHeaderDelegate extends SliverPersistentHeaderDelegate {
           right: 0,
           child: MagazineCoverImage(
             scrollPer: scrollPer,
+            imagePath: imagePath,
+            tag: tag,
           ),
         ),
 

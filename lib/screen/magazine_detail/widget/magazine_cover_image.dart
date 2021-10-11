@@ -1,13 +1,19 @@
 ﻿import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class MagazineCoverImage extends StatefulWidget {
-  const MagazineCoverImage({Key? key, required this.scrollPer})
+  const MagazineCoverImage(
+      {Key? key,
+      required this.scrollPer,
+      required this.imagePath,
+      required this.tag})
       : super(key: key);
 
+  final String imagePath;
+  final String tag;
   final double scrollPer;
 
   @override
@@ -17,6 +23,7 @@ class MagazineCoverImage extends StatefulWidget {
 class _MagazineCoverImageState extends State<MagazineCoverImage> {
   @override
   Widget build(BuildContext context) {
+    print("tag : ${widget.tag}");
     final deviceSize = MediaQuery.of(context).size;
     final opacityRate = widget.scrollPer > 0.9 ? 1 : 0.45;
 
@@ -38,9 +45,9 @@ class _MagazineCoverImageState extends State<MagazineCoverImage> {
         width: deviceSize.width,
         height: deviceSize.height * 0.7,
         alignment: Alignment.center,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: ExactAssetImage("assets/images/music-album.jpg"),
+            image: ExactAssetImage(widget.imagePath),
             fit: BoxFit.cover,
           ),
           color: Colors.black,
@@ -61,7 +68,15 @@ class _MagazineCoverImageState extends State<MagazineCoverImage> {
                 1,
                 _is70PerScrolled ? _scaleValue70 : _scaleValue,
               ),
-              child: const MagazinePageView(),
+              // child: const MagazinePageView(),
+              child: AspectRatio(
+                aspectRatio: 1.3,
+                child: Image.asset(
+                  widget.imagePath,
+                  // width: 200,
+                  // height: 250,
+                ),
+              ),
             ),
           ),
         ),
