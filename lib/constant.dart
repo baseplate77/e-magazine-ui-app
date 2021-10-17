@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 const kText24 = TextStyle(fontSize: 24);
 const kText22 = TextStyle(fontSize: 22);
 const kText20 = TextStyle(fontSize: 20);
-const kText18 = TextStyle(fontSize: 18);
+const kText18 = TextStyle(
+  fontSize: 14,
+  height: 1.5,
+);
 const kText16 = TextStyle(fontSize: 16);
 const kText14 = TextStyle(fontSize: 14);
 
@@ -24,9 +27,10 @@ List<String> imagePaths = [
 ];
 
 List<String> recomImagePaths = [
-  "assets/images/am-1.jpg",
-  "assets/images/am-2.jpg",
-  "assets/images/am-3.jpg",
-  "assets/images/am-4.jpg",
-  "assets/images/am-5.jpg",
+  "assets/images/all-1.jpeg",
+  "assets/images/all-4.jpeg",
+  "assets/images/all-5.jpeg",
+  "assets/images/all-2.jpeg",
+  "assets/images/all-6.jpeg",
+  "assets/images/all-3.jpeg",
 ];
