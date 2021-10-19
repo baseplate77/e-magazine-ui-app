@@ -1,9 +1,8 @@
-import 'package:e_magazine_ui/screen/home/home_screen.dart';
-import 'package:e_magazine_ui/screen/magazine_detail/magazinbe_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
 import 'core/utils/size_config.dart';
+import 'screens/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizeConfiguration(
       builder: (_) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Magazi',
         theme: AppTheme.light(),
         home: HomeScreen(),
